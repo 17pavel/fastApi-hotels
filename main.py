@@ -1,9 +1,29 @@
-import databases
-from fastapi import FastAPI
+
+from typing import Optional
+from datetime import date
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
 
 app = FastAPI()
 
-@app.get("/hotels/{hotel_id}")
-def get_hotels(hotel_id: int, date_from: str, date_to: str):
-    return hotel_id, date_from, date_to
+class SBooking(BaseModel):
+    room_id: int
+    date_from: date
+    date_to: date
+
+
+@app.get("/hotels")
+def get_hotels(
+    location: str,
+    date_from: date,
+    date_to: date,
+    spa: Optional[bool] = None,
+    stars: Optional[int] = Query(None, ge=1, le=5)
+):
+    return location, date_from, date_to
+
+@app.post("/bookings")
+def add_booking(booking: SBooking):
+    pass
+
+
