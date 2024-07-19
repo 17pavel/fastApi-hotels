@@ -1,0 +1,18 @@
+.myMenu {
+    display: flex;
+    justify-content: space-around;
+    color: red;
+    height: 4em;
+    background-color: black;
+}
+
+nav {
+    margin: auto;
+    }
+
+a {
+    text-decoration: none;
+    margin: 0 20px 0 20px;
+    color: yellow;
+    text-decoration: none;
+}
